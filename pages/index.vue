@@ -1,4 +1,5 @@
 <template>
+    <!-- random comment for testing NuxtJS build on GitHub -->
     <div class="d-flex justify-content-center bg-thistle-tan w-100 py-2">
         <img src="~/assets/thistledown-nav-logo.png" height="100" loading="lazy" />
     </div>
