@@ -1,7 +1,7 @@
 <template>
     <!-- random comment for testing NuxtJS build on GitHub -->
-    <div class="d-flex justify-content-center bg-thistle-tan w-100 py-2">
-        <img src="~/assets/thistledown-nav-logo.png" height="100" loading="lazy" />
+    <div class="d-flex justify-content-center bg-thistle-tan w-100 m-0 p-0">
+        <img src="~/assets/thistledown-nav-logo.png" height="200" loading="lazy" />
     </div>
 
     <div class="d-flex bg-thistle-tan-drk w-100 py-2 gap-2">
@@ -14,7 +14,7 @@
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="~/assets/thistledown-logo-watermark.png" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src="~/assets/thistledown-logo.svg" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="About Us" width="700" height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">About Us</h1>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="~/assets/thistledown-logo-watermark.png" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src="~/assets/thistledown-logo.svg" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="~/assets/thistledown-logo-watermark.png" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src="~/assets/thistledown-logo.svg" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Our Home</h1>
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="~/assets/thistledown-logo-watermark.png" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src="~/assets/thistledown-logo.svg" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
         </div>
     </div>
@@ -108,7 +108,7 @@
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="~/assets/thistledown-logo-watermark.png" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src="~/assets/thistledown-logo.svg" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Our Approach</h1>
@@ -148,7 +148,7 @@
                 </div>
             </div>
             <div class="col-10 col-sm-8 col-lg-6">
-                <img src="~/assets/thistledown-logo-watermark.png" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src="~/assets/thistledown-logo.svg" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
         </div>
     </div>
@@ -162,5 +162,33 @@
 
 .bg-thistle-tan-drk {
     background-color: rgb(253, 240, 208);
+}
+
+.thistledown-logo {
+    color: #69765E;
+}
+
+.text-thistledown {
+    color: #545454;
+}
+
+a {
+    padding: 5px;
+    text-decoration: none;
+    color: #545454;
+}
+
+a:hover {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(196, 184, 155, 0.829);
+    color: #2c2c2c;
+}
+
+p, a, .playfair-display-thistledown {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 </style>
