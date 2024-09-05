@@ -1,18 +1,8 @@
 <template>
-    <!-- random comment for testing NuxtJS build on GitHub -->
-    <div class="d-flex justify-content-center bg-thistle-tan w-100 m-0 p-0">
-        <img src="~/assets/thistledown-nav-logo.png" height="200" loading="lazy" />
-    </div>
-
-    <div class="d-flex bg-thistle-tan-drk w-100 py-2 gap-2">
-        <div class="col-1"></div>
-        <a href="/"><span>Home</span></a>
-        <a href="/not-home"><span>Not Home</span></a>
-        <a href="/something-else"><span>Something Else</span></a>
-    </div>
+    <ThistledownHeader />
 
     <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5 bg-heros">
             <div class="col-10 col-sm-8 col-lg-6">
                 <img src="~/assets/thistledown-logo.svg" class="d-block mx-lg-auto border border-solid rounded img-fluid" alt="About Us" width="700" height="500" loading="lazy">
             </div>
@@ -84,7 +74,7 @@
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Our Community</h1>
+                <h1 id="our-community" class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Our Community</h1>
                 <p class="lead">Thistledown is situated in a vibrant community, surrounded by a plethora of
                     diverse businesses. Its convenient location offers residents the unique
                     advantage of being within walking distance or a short commute to a wide
@@ -157,11 +147,15 @@
 
 <style>
 .bg-thistle-tan {
-    background-color: #FFF8E8;
+    background-color: white;
 }
 
 .bg-thistle-tan-drk {
-    background-color: rgb(253, 240, 208);
+    background-color: #dbe4cf;
+}
+
+.bg-heros {
+    background-color: #e9efec95;
 }
 
 .thistledown-logo {
@@ -186,7 +180,7 @@ a:hover {
 }
 
 p, a, .playfair-display-thistledown {
-  font-family: "Playfair Display", serif;
+  font-family: sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
