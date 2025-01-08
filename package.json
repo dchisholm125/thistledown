@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@vueuse/core": "^11.3.0",
+    "bootstrap": "^5.3.3",
+    "html2pdf": "latest",
+    "html2pdf.js": "latest",
+    "jspdf": "^2.5.2",
+    "nodemailer": "^6.9.16",
+    "nuxt": "^3.13.2",
+    "twilio": "5.3.5",
+    "vue": "latest"
+  }
+}
