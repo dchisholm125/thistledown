@@ -1,0 +1,5 @@
+const index_vue_vue_type_style_index_0_lang = "@keyframes fadeIn{0%{background-color:transparent;color:#000;font-size:18pt}to{background-color:rgba(0,0,0,.048);border-radius:10px;color:blue;font-size:19pt}}.banner-height{height:80vh}.bg-opaque-black{background-color:rgba(0,0,0,.75)}.bg-opaque-white{background-color:hsla(0,0%,100%,.75)}.bg-thistle-ultralight-grey{background-color:#ecebe4}.bg-thistle-tan-drk{background-color:#dbe4cf}.bg-thistle-light-gray{background-color:#d9d5cd}.bg-heros{background-color:#e9efec95}.thistledown-logo{color:#69765e}.text-thistledown{color:#545454}.text-charcoal{color:#242525;font-weight:700}.font-libre{font-family:Libre Baskerville}.font-lato{font-family:Lato}a{color:#545454;text-decoration:none}a,a:hover{padding:5px}a:hover{background-color:hsla(42,26%,69%,.829);border-radius:5px;color:#2c2c2c}.playfair-display-thistledown,a,p{font-family:sans-serif;font-optical-sizing:auto;font-style:normal;font-weight:400}.font-skinny{font-weight:400}";
+export {
+  index_vue_vue_type_style_index_0_lang as default
+};
+//# sourceMappingURL=index-styles-1.mjs-D6AE9lQE.js.map

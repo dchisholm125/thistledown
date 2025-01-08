@@ -1,0 +1,331 @@
+import { a as buildAssetsURL } from '../routes/renderer.mjs';
+import { useSSRContext, defineComponent, useModel, mergeProps, ref, computed, unref, inject, withCtx, createVNode } from 'vue';
+import { ssrRenderComponent, ssrRenderAttrs, ssrRenderAttr, ssrRenderStyle, ssrInterpolate, ssrRenderSlot, ssrRenderList } from 'vue/server-renderer';
+import { useWindowSize } from '@vueuse/core';
+import { _ as _export_sfc } from './server.mjs';
+import 'vue-bundle-renderer/runtime';
+import '../runtime.mjs';
+import 'node:http';
+import 'node:https';
+import 'node:fs';
+import 'node:path';
+import 'node:url';
+import 'devalue';
+import '@unhead/ssr';
+import 'unhead';
+import '@unhead/shared';
+import 'vue-router';
+
+const _sfc_main$3 = /* @__PURE__ */ defineComponent({
+  __name: "ContentBlock",
+  __ssrInlineRender: true,
+  props: {
+    imgAfterText: { type: Boolean },
+    sectionName: {},
+    sectionContent: {},
+    imgSrc: {},
+    sectionBlurb: {},
+    boldCallout: {}
+  },
+  setup(__props) {
+    const props = __props;
+    const { width: windowWidth } = useWindowSize();
+    ref();
+    const imgSizeHeight = ref();
+    const compHtmlId = computed(() => {
+      let buildStr = "";
+      for (let char in props.sectionName) {
+        buildStr += props.sectionName[char] === " " ? "-" : props.sectionName[char].toLowerCase();
+      }
+      return buildStr;
+    });
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<div${ssrRenderAttrs(mergeProps({
+        id: unref(compHtmlId),
+        class: "d-flex flex-column flex-lg-row m-0 p-0 align-items-center text-charcoal"
+      }, _attrs))} data-v-4a45f3ef>`);
+      if (!_ctx.imgAfterText || unref(windowWidth) < 992) {
+        _push(`<img${ssrRenderAttr("src", props.imgSrc)} class="col-12 col-lg-6 img-fluid"${ssrRenderAttr("alt", props.sectionName)} loading="lazy" data-v-4a45f3ef>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`<div class="col-12 col-lg-6 d-flex flex-column justify-content-evenly py-3 py-lg-0 px-5" style="${ssrRenderStyle(unref(windowWidth) > 992 ? "height: " + unref(imgSizeHeight) + "px" : "")}" data-v-4a45f3ef>`);
+      if (_ctx.sectionName) {
+        _push(`<p class="display-2 font-libre my-3" data-v-4a45f3ef>${ssrInterpolate(_ctx.sectionName)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      if (_ctx.sectionContent) {
+        _push(`<p class="lead text-wrap overflow-auto font-lato" data-v-4a45f3ef>${ssrInterpolate(_ctx.sectionContent)}</p>`);
+      } else {
+        _push(`<!---->`);
+      }
+      ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
+      _push(`</div>`);
+      if (_ctx.imgAfterText && unref(windowWidth) >= 992) {
+        _push(`<img${ssrRenderAttr("src", props.imgSrc)} class="col-12 col-lg-6 img-fluid" style="${ssrRenderStyle({ "max-height": "60vh" })}"${ssrRenderAttr("alt", props.sectionName)} loading="lazy" data-v-4a45f3ef>`);
+      } else {
+        _push(`<!---->`);
+      }
+      _push(`</div>`);
+    };
+  }
+});
+const _sfc_setup$3 = _sfc_main$3.setup;
+_sfc_main$3.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/ContentBlock.vue");
+  return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
+};
+const __nuxt_component_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-4a45f3ef"]]);
+const _sfc_main$2 = /* @__PURE__ */ defineComponent({
+  __name: "AmenityCard",
+  __ssrInlineRender: true,
+  props: {
+    icon: {},
+    text: {}
+  },
+  setup(__props) {
+    return (_ctx, _push, _parent, _attrs) => {
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "d-flex align-items-center gap-3 m-0 p-3" }, _attrs))}><img${ssrRenderAttr("src", _ctx.icon)} height="25" width="25"><span style="${ssrRenderStyle({ "font-weight": "500", "font-family": "sans-serif" })}">${ssrInterpolate(_ctx.text)}</span></div>`);
+    };
+  }
+});
+const _sfc_setup$2 = _sfc_main$2.setup;
+_sfc_main$2.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/AmenityCard.vue");
+  return _sfc_setup$2 ? _sfc_setup$2(props, ctx) : void 0;
+};
+const Bike = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='currentColor'%20viewBox='0%200%2050%2050'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cpath%20d='M28.988281%208.992188C28.582031%208.992188%2028.21875%209.238281%2028.0625%209.613281C27.910156%209.992188%2028%2010.421875%2028.292969%2010.707031C28.792969%2011.207031%2029.410156%2011.707031%2030.335938%2011.859375C31.089844%2011.988281%2032.453125%2011.972656%2034.125%2011.972656C34.160156%2012.234375%2034.195313%2012.484375%2034.261719%2012.859375C34.394531%2013.648438%2034.605469%2014.753906%2034.859375%2016L17.617188%2016L16.125%2013.011719C16.183594%2013.007813%2016.242188%2013%2016.300781%2013C18.902344%2013%2020%2012.300781%2020%2011.597656C20%2011%2019.5%2011%2018.699219%2011.097656L12.300781%2011.097656C11.199219%2011.097656%2011%2011.601563%2011%2012.5C11%2014.792969%2012.355469%2014.050781%2014.105469%2013.449219L15.878906%2017L13.546875%2021.664063C12.445313%2021.242188%2011.25%2021%2010%2021C4.488281%2021%200%2025.488281%200%2031C0%2036.511719%204.488281%2041%2010%2041C15.171875%2041%2019.445313%2037.042969%2019.949219%2032L23.992188%2032C23.996094%2032%2023.996094%2032%2024%2032C24.003906%2032%2024.011719%2032%2024.015625%2032C24.042969%2032%2024.070313%2031.996094%2024.097656%2031.996094C24.128906%2031.992188%2024.160156%2031.988281%2024.191406%2031.984375C24.195313%2031.980469%2024.195313%2031.980469%2024.199219%2031.980469C24.230469%2031.972656%2024.257813%2031.964844%2024.289063%2031.957031C24.292969%2031.957031%2024.292969%2031.957031%2024.296875%2031.953125C24.324219%2031.945313%2024.355469%2031.9375%2024.382813%2031.921875C24.386719%2031.921875%2024.386719%2031.921875%2024.390625%2031.921875C24.417969%2031.910156%2024.445313%2031.894531%2024.472656%2031.878906C24.476563%2031.878906%2024.476563%2031.878906%2024.480469%2031.875C24.507813%2031.863281%2024.53125%2031.847656%2024.558594%2031.828125C24.558594%2031.828125%2024.558594%2031.828125%2024.5625%2031.828125C24.589844%2031.808594%2024.613281%2031.789063%2024.640625%2031.769531C24.640625%2031.769531%2024.644531%2031.765625%2024.644531%2031.765625C24.652344%2031.757813%2024.660156%2031.75%2024.671875%2031.738281C24.6875%2031.726563%2024.703125%2031.710938%2024.71875%2031.699219C24.726563%2031.6875%2024.734375%2031.679688%2024.742188%2031.671875C24.75%2031.664063%2024.753906%2031.65625%2024.761719%2031.652344L35.539063%2019.074219C35.734375%2019.917969%2035.957031%2020.8125%2036.203125%2021.753906C32.566406%2023.257813%2030%2026.832031%2030%2031C30%2036.511719%2034.488281%2041%2040%2041C45.511719%2041%2050%2036.511719%2050%2031C50%2025.488281%2045.511719%2021%2040%2021C39.355469%2021%2038.730469%2021.066406%2038.121094%2021.183594C37.703125%2019.5625%2037.332031%2018.035156%2037.050781%2016.738281C36.667969%2014.964844%2036.402344%2013.53125%2036.234375%2012.527344C36.148438%2012.023438%2036.085938%2011.625%2036.046875%2011.351563C36.03125%2011.214844%2036.015625%2011.105469%2036.007813%2011.035156C36%2010.964844%2036%2010.851563%2036%2011C36%2010.449219%2035.550781%2010%2035%2010C32.5%2010%2031.238281%209.984375%2030.664063%209.890625C30.089844%209.792969%2030.207031%209.792969%2029.707031%209.292969C29.519531%209.097656%2029.261719%208.992188%2028.988281%208.992188%20Z%20M%2018.617188%2018L33.828125%2018L24.21875%2029.207031%20Z%20M%2017%2019.234375L22.378906%2030L19.949219%2030C19.636719%2026.871094%2017.867188%2024.167969%2015.339844%2022.5625%20Z%20M%2010%2023C10.933594%2023%2011.820313%2023.167969%2012.652344%2023.457031L9.105469%2030.550781C8.949219%2030.863281%208.96875%2031.230469%209.148438%2031.527344C9.332031%2031.820313%209.652344%2032%2010%2032L17.933594%2032C17.441406%2035.953125%2014.089844%2039%2010%2039C5.570313%2039%202%2035.429688%202%2031C2%2026.570313%205.570313%2023%2010%2023%20Z%20M%2040%2023C44.429688%2023%2048%2026.570313%2048%2031C48%2035.429688%2044.429688%2039%2040%2039C35.570313%2039%2032%2035.429688%2032%2031C32%2027.746094%2033.929688%2024.960938%2036.710938%2023.707031C37.351563%2026.046875%2038.125%2028.605469%2039.054688%2031.324219C39.160156%2031.675781%2039.449219%2031.941406%2039.808594%2032.015625C40.167969%2032.089844%2040.539063%2031.964844%2040.773438%2031.683594C41.011719%2031.402344%2041.078125%2031.019531%2040.945313%2030.675781C40.023438%2027.980469%2039.257813%2025.4375%2038.625%2023.125C39.074219%2023.046875%2039.53125%2023%2040%2023%20Z%20M%2014.445313%2024.34375C16.328125%2025.601563%2017.640625%2027.636719%2017.933594%2030L11.617188%2030Z'/%3e%3c/svg%3e";
+const CableTV = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20viewBox='0%200%2024%2024'%20fill='currentColor'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M17.35%2012.7901C17.1686%2012.7907%2016.9935%2012.7229%2016.86%2012.6001C15.5322%2011.411%2013.8124%2010.7534%2012.03%2010.7534C10.2476%2010.7534%208.52779%2011.411%207.19999%2012.6001C7.12649%2012.6658%207.04075%2012.7164%206.94767%2012.749C6.85459%2012.7816%206.756%2012.7955%206.65755%2012.7899C6.55909%2012.7843%206.4627%2012.7594%206.37389%2012.7165C6.28508%2012.6736%206.2056%2012.6137%206.13999%2012.5401C6.0109%2012.3892%205.94595%2012.1939%205.95904%2011.9958C5.97212%2011.7977%206.06219%2011.6126%206.20999%2011.4801C7.80752%2010.0423%209.88072%209.2467%2012.03%209.2467C14.1793%209.2467%2016.2525%2010.0423%2017.85%2011.4801C17.9978%2011.6126%2018.0879%2011.7977%2018.1009%2011.9958C18.114%2012.1939%2018.0491%2012.3892%2017.92%2012.5401C17.8469%2012.6181%2017.7586%2012.6806%2017.6606%2012.7236C17.5627%2012.7665%2017.457%2012.7892%2017.35%2012.7901Z'%20fill='%23000000'/%3e%3cpath%20d='M20%2010C19.811%209.99907%2019.6292%209.92777%2019.49%209.80002C17.4685%207.87306%2014.7828%206.79812%2011.99%206.79812C9.19719%206.79812%206.51153%207.87306%204.48999%209.80002C4.42116%209.88186%204.33563%209.94804%204.23912%209.99411C4.14262%2010.0402%204.03738%2010.0651%203.93046%2010.0672C3.82354%2010.0692%203.71742%2010.0484%203.61921%2010.0061C3.521%209.96375%203.43298%209.90092%203.36105%209.82179C3.28911%209.74267%203.23493%209.64907%203.20214%209.54729C3.16934%209.4455%203.15869%209.33788%203.17091%209.23164C3.18312%209.1254%203.21791%209.023%203.27294%208.93131C3.32798%208.83962%203.40198%208.76076%203.48999%208.70002C5.78577%206.52533%208.82774%205.31329%2011.99%205.31329C15.1522%205.31329%2018.1942%206.52533%2020.49%208.70002C20.5994%208.80134%2020.6761%208.93298%2020.7103%209.07811C20.7446%209.22324%2020.7348%209.37527%2020.6822%209.5148C20.6296%209.65433%2020.5366%209.77502%2020.4151%209.86145C20.2936%209.94787%2020.1491%209.99612%2020%2010Z'%20fill='%23000000'/%3e%3cpath%20d='M9.38%2015.64C9.26356%2015.64%209.14873%2015.6129%209.04459%2015.5608C8.94044%2015.5088%208.84986%2015.4332%208.78%2015.34C8.7196%2015.2617%208.67551%2015.1721%208.65032%2015.0765C8.62513%2014.9809%208.61936%2014.8812%208.63334%2014.7834C8.64732%2014.6855%208.68078%2014.5914%208.73173%2014.5067C8.78268%2014.4219%208.8501%2014.3483%208.93%2014.29C9.81277%2013.6145%2010.8934%2013.2485%2012.005%2013.2485C13.1166%2013.2485%2014.1972%2013.6145%2015.08%2014.29C15.1588%2014.3491%2015.2252%2014.4232%2015.2754%2014.5079C15.3255%2014.5926%2015.3585%2014.6865%2015.3725%2014.784C15.3864%2014.8815%2015.381%2014.9807%2015.3565%2015.0762C15.3321%2015.1716%2015.2891%2015.2612%2015.23%2015.34C15.1091%2015.497%2014.9316%2015.6005%2014.7355%2015.6285C14.5394%2015.6565%2014.34%2015.6068%2014.18%2015.49C13.5548%2015.014%2012.7908%2014.7561%2012.005%2014.7561C11.2192%2014.7561%2010.4551%2015.014%209.83%2015.49C9.69921%2015.5855%209.54193%2015.6379%209.38%2015.64Z'%20fill='%23000000'/%3e%3cpath%20d='M12%2018.75C11.8011%2018.75%2011.6103%2018.671%2011.4697%2018.5303C11.329%2018.3897%2011.25%2018.1989%2011.25%2018C11.25%2017.8011%2011.329%2017.6103%2011.4697%2017.4697C11.6103%2017.329%2011.8011%2017.25%2012%2017.25C12.1989%2017.25%2012.3897%2017.329%2012.5303%2017.4697C12.671%2017.6103%2012.75%2017.8011%2012.75%2018C12.75%2018.1989%2012.671%2018.3897%2012.5303%2018.5303C12.3897%2018.671%2012.1989%2018.75%2012%2018.75Z'%20fill='%23000000'/%3e%3c/svg%3e";
+const Bathroom = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='currentColor'%20viewBox='0%200%20512%20512'%20id='Layer_1'%20enable-background='new%200%200%20512%20512'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%3e%3cpath%20d='m496%20288c-38.154%200-437.487%200-448%200v-56h32c8.837%200%2016-7.164%2016-16v-40c0-8.836-7.163-16-16-16s-16%207.164-16%2016v24h-16v-138.745c0-25.903%2031.562-39.064%2049.941-20.686l16.94%2016.94c-13.424%2023.401-10.164%2053.835%209.805%2073.805l8%208c6.247%206.248%2016.379%206.249%2022.627%200l64-64c6.249-6.248%206.249-16.379%200-22.627l-8-8c-20.35-20.351-50.837-23.06-73.817-9.817l-16.928-16.928c-11.57-11.57-26.952-17.942-43.313-17.942-33.776%200-61.255%2027.479-61.255%2061.255v226.745c-8.837%200-16%207.164-16%2016s7.163%2016%2016%2016v32c0%2043.889%2019.742%2083.247%2050.806%20109.681l-22.338%2023.229c-9.803%2010.193-2.445%2027.09%2011.53%2027.09%204.199%200%208.394-1.644%2011.534-4.91l26.218-27.263c19.844%2010.326%2042.376%2016.173%2066.25%2016.173h192c23.874%200%2046.406-5.847%2066.25-16.173l26.218%2027.263c6.106%206.35%2016.234%206.585%2022.623.442%206.369-6.125%206.566-16.254.441-22.623l-22.338-23.229c31.064-26.433%2050.806-65.791%2050.806-109.68v-32c8.837%200%2016-7.164%2016-16s-7.163-16-16-16zm-310.89-223.738-40.845%2040.845c-8.246-11.427-7.23-27.515%203.048-37.794%2010.378-10.377%2026.461-11.259%2037.797-3.051zm278.89%20287.738c0%2061.757-50.243%20112-112%20112h-192c-61.757%200-112-50.243-112-112v-32h416z'/%3e%3c/g%3e%3c/svg%3e";
+const Kitchen = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='iso-8859-1'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3csvg%20fill='currentColor'%20version='1.1'%20id='Capa_1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20viewBox='0%200%20210.946%20210.947'%20xml:space='preserve'%3e%3cg%3e%3cg%3e%3cpath%20d='M105.433,34.254c-39.271,0-71.22,31.949-71.22,71.22c0,39.27,31.949,71.219,71.22,71.219%20c39.272,0,71.222-31.949,71.222-71.219C176.655,66.203,144.705,34.254,105.433,34.254z%20M105.433,169.944%20c-35.549,0-64.47-28.921-64.47-64.469c0-35.549,28.921-64.47,64.47-64.47c35.549,0,64.472,28.921,64.472,64.47%20C169.905,141.023,140.982,169.944,105.433,169.944z'/%3e%3cpath%20d='M105.433,53.638c-28.581,0-51.833,23.253-51.833,51.836c0,28.584,23.252,51.839,51.833,51.839%20c28.583,0,51.836-23.255,51.836-51.839C157.271,76.892,134.016,53.638,105.433,53.638z%20M105.433,150.564%20c-24.859,0-45.083-20.227-45.083-45.089c0-24.861,20.224-45.086,45.083-45.086c24.861,0,45.086,20.225,45.086,45.086%20C150.521,130.337,130.295,150.564,105.433,150.564z'/%3e%3cpath%20d='M206.693,107.012c-0.004-1.687-0.059-18.491-0.555-35.09c-0.306-10.262-0.72-18.452-1.228-24.343%20c-0.313-3.634-0.657-6.358-1.05-8.329c-0.342-1.716-1.143-5.735-4.625-5.735c-0.254,0-0.508,0.026-0.756,0.078%20c-2.155,0.446-3.623,2.133-6.623,10.944c-1.863,5.475-3.91,12.644-5.764,20.19c-2.205,8.977-7.201,31.14-5.98,43.042%20c0.801,7.811,4.332,9.45,7.154,9.45l0.164-0.002c1.332-0.034,2.391-0.052,3.235-0.052c0.976,0,1.583,0.021,2.286,0.047%20c0.094,0.003,0.189,0.007,0.289,0.01c-0.236,5.541-1.171,13.22-2.081,20.689c-1.323,10.867-2.692,22.105-2.224,28.756%20c0.559,7.945,5.936,10.764,10.371,10.764c3.125,0,6.317-1.332,8.537-3.562c2.014-2.024,3.114-4.656,3.101-7.41%20C210.905,158.311,206.98,110.52,206.693,107.012z%20M203.061,169.108c-0.967,0.972-2.404,1.574-3.754,1.574%20c-2.203,0-3.428-1.51-3.637-4.487c-0.422-6.004,0.906-16.914,2.191-27.467c1.186-9.734,2.305-18.93,2.178-24.896%20c-0.039-1.836-1.539-3.303-3.374-3.303c-1.731,0-8.675,0.664-9.06-0.068c-1.062-1.741-2.277-10.688,3.021-35.345%20c2.425-11.285,5.272-21.403,7.481-27.997c1.129,12.633,1.799,37.293,1.836,60.042c0,0.092,0.004,0.182,0.011,0.272%20c0.042,0.509,4.201,51.04,4.242,59.063C204.201,167.466,203.819,168.346,203.061,169.108z'/%3e%3cpath%20d='M36.723,70.209c0-2.134-0.068-5.211-0.154-9.106c-0.132-5.952-0.296-15.609-0.296-23.355c0-1.864-1.511-3.375-3.375-3.375%20c-1.864,0-3.375,1.511-3.375,3.375c0,7.821,0.165,17.519,0.298,23.504c0.023,1.046,0.046,2.051,0.065,3.002l-3.472,0.051V38.878%20c0-1.864-1.511-3.375-3.375-3.375c-1.864,0-3.375,1.511-3.375,3.375v25.527l-3.153,0.046V38.878c0-1.864-1.511-3.375-3.375-3.375%20c-1.864,0-3.375,1.511-3.375,3.375V64.55L6.75,64.594V36.973c0-1.864-1.511-3.375-3.375-3.375C1.511,33.598,0,35.109,0,36.973%20v32.825c0,8.19,6.004,13.786,15.58,14.887v19.335c-0.975,0.018-1.512,0.034-1.567,0.035c-1.633,0.048-2.998,1.258-3.239,2.874%20c-1.598,10.676-5.008,44.078-4.729,57.747c0.173,8.444,5.758,12.224,11.216,12.224c5.808,0,12.269-4.297,12.581-11.24%20c0.357-7.971-1.746-41.746-2.644-53.862c-0.163-2.206-0.285-3.849-0.342-4.694c-0.119-1.771-1.591-3.149-3.367-3.149%20c-0.399,0-0.784,0-1.159,0.002V84.633C30.952,83.253,36.723,76.417,36.723,70.209z%20M23.099,165.357%20c-0.129,2.867-3.122,4.792-5.837,4.792c-2.848,0-4.393-1.94-4.468-5.612c-0.236-11.584,2.46-41.022,4.249-53.791%20c0.904-0.013,2.012-0.024,3.308-0.032c0.036,0.487,0.075,1.017,0.117,1.581C21.28,123.261,23.438,157.789,23.099,165.357z%20M6.894,71.343l22.997-0.338c-0.606,3.154-4.658,7.133-10.738,7.133C16.451,78.138,8.075,77.615,6.894,71.343z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e";
+const OutdoorSpace = "" + buildAssetsURL("Outdoor communal space.DDxORzrg.svg");
+const Beds = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='currentColor'%20viewBox='0%200%2050%2050'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cpath%20d='M10%209C8.355469%209%207%2010.355469%207%2012L7%2042C7%2042.550781%207.449219%2043%208%2043L12%2043C12.550781%2043%2013%2042.550781%2013%2042L13%2040C13%2039.445313%2013.445313%2039%2014%2039L36%2039C36.554688%2039%2037%2039.445313%2037%2040L37%2042C37%2042.550781%2037.449219%2043%2038%2043L42%2043C42.550781%2043%2043%2042.550781%2043%2042L43%2012C43%2010.355469%2041.644531%209%2040%209%20Z%20M%2010%2011L40%2011C40.554688%2011%2041%2011.445313%2041%2012L41%2022.1875C40.683594%2022.074219%2040.351563%2022%2040%2022L38%2022L38%2020C38.003906%2019.789063%2037.9375%2019.578125%2037.8125%2019.40625C37.8125%2019.40625%2036.886719%2018.207031%2034.875%2017.125C32.863281%2016.042969%2029.695313%2015%2025%2015C20.304688%2015%2017.136719%2016.042969%2015.125%2017.125C13.113281%2018.207031%2012.1875%2019.40625%2012.1875%2019.40625C12.0625%2019.578125%2011.996094%2019.789063%2012%2020L12%2022L10%2022C9.648438%2022%209.316406%2022.074219%209%2022.1875L9%2012C9%2011.445313%209.445313%2011%2010%2011%20Z%20M%2025%2017C29.402344%2017%2032.222656%2017.957031%2033.9375%2018.875C35.503906%2019.714844%2035.910156%2020.316406%2036%2020.4375L36%2022L14%2022L14%2020.4375C14.089844%2020.316406%2014.496094%2019.714844%2016.0625%2018.875C17.777344%2017.957031%2020.597656%2017%2025%2017%20Z%20M%2010%2024L40%2024C40.554688%2024%2041%2024.445313%2041%2025L41%2041L39%2041L39%2040C39%2038.355469%2037.644531%2037%2036%2037L14%2037C12.355469%2037%2011%2038.355469%2011%2040L11%2041L9%2041L9%2025C9%2024.445313%209.445313%2024%2010%2024Z'/%3e%3c/svg%3e";
+const WasherDryer = "data:image/svg+xml,%3c?xml%20version='1.0'%20?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='currentColor'%20viewBox='0%200%2064%2064'%20id='Layer_1'%20version='1.1'%20xml:space='preserve'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cg%3e%3cpath%20d='M12.1,58h39.8l-0.5-3.9c1.9,0.5,4.3,0.9,7.6,0.9v-2c-3.5,0-5.9-0.4-7.8-1.1l-0.5-4.1c2.1,0.6,4.6,1.1,8.3,1.1v-2%20c-4,0-6.5-0.6-8.6-1.3l-0.5-4c2.2,0.8,4.9,1.4,9.1,1.4v-2c-4.4,0-7-0.7-9.3-1.6L49,34h10.1l-4.2-23H37.8l-0.1,0.9%20c-0.2,2.7-2.5,4.8-5.2,4.8c-2.7,0-5-2.1-5.2-4.8L27.2,11H9.1L4.9,33.6H15L12.1,58z%20M7.3,31.6L10.8,13h14.6c0.7,3.3,3.6,5.8,7.1,5.8%20c3.4,0,6.4-2.5,7.1-5.8h13.7l3.5,19h-7.9l-0.9-7.8l-2,0.2l1.7,14C44.5,37.3,41.1,36,34,36v2c7.1,0,10.2,1.3,13.2,2.6%20c0.2,0.1,0.4,0.2,0.6,0.3l0.5,4c-0.1,0-0.2-0.1-0.3-0.1c-3.2-1.3-6.5-2.7-14-2.7v2c7.1,0,10.2,1.3,13.2,2.6%20c0.4,0.2,0.9,0.4,1.4,0.6l0.5,4c-0.4-0.1-0.7-0.3-1.1-0.4c-3.2-1.3-6.5-2.7-14-2.7v2c7.1,0,10.2,1.3,13.2,2.6%20c0.7,0.3,1.4,0.6,2.1,0.8l0.3,2.6H14.4l3.7-31.5l-2-0.2l-0.9,7.4H7.3z'/%3e%3c/g%3e%3c/svg%3e";
+const Parking = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='currentColor'%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5,22H19a3,3,0,0,0,3-3V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V19A3,3,0,0,0,5,22ZM4,5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1ZM9,18a1,1,0,0,0,1-1V14h2a4,4,0,0,0,0-8H9A1,1,0,0,0,8,7V17A1,1,0,0,0,9,18ZM10,8h2a2,2,0,0,1,0,4H10Z'/%3e%3c/svg%3e";
+const SingleDouble = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='currentColor'%20viewBox='0%200%2032%2032'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%3e%3ctitle%3edoor-open%3c/title%3e%3cpath%20d='M30%2029.25h-1.25v-25.25c-0-0.414-0.336-0.75-0.75-0.75h-6c-0.414%200-0.75%200.336-0.75%200.75s0.336%200.75%200.75%200.75v0h5.25v25.25c0%200.414%200.336%200.75%200.75%200.75h2c0.414%200%200.75-0.336%200.75-0.75s-0.336-0.75-0.75-0.75v0zM17.853%201.26l-11.977%202c-0.357%200.062-0.626%200.37-0.626%200.74%200%200%200%200%200%200v0%2025.25h-3.25c-0.414%200-0.75%200.336-0.75%200.75s0.336%200.75%200.75%200.75v0h15.977c0.414-0%200.75-0.336%200.75-0.75v0-28c-0.001-0.414-0.337-0.75-0.751-0.75-0.043%200-0.086%200.004-0.127%200.011l0.004-0.001zM6.75%2029.25v-24.615l10.477-1.749v26.364zM13.979%2015.3c-0.082-0.030-0.177-0.048-0.276-0.048-0.21%200-0.401%200.079-0.545%200.209l0.001-0.001c-0.136%200.139-0.22%200.33-0.22%200.54s0.084%200.401%200.22%200.54l-0-0c0.145%200.122%200.334%200.197%200.539%200.199h0.001c0.1-0.002%200.197-0.016%200.288-0.042l-0.008%200.002c0.094-0.039%200.173-0.092%200.24-0.159v0c0.136-0.139%200.22-0.33%200.22-0.54s-0.084-0.401-0.22-0.54l0%200c-0.067-0.068-0.147-0.122-0.236-0.158l-0.005-0.002z'%3e%3c/path%3e%3c/svg%3e";
+const AboutUsPhoto = "" + buildAssetsURL("AboutUsPhoto.DUwb58o7.jpeg");
+const HouseAmenPhoto = "" + buildAssetsURL("House Amenities.AW001QVo.jpeg");
+const MissionPhoto = "" + buildAssetsURL("Our Mission.D3BfBAcT.jpeg");
+const HomePhoto = "" + buildAssetsURL("Our Home.DaSnGH4Y.jpeg");
+const CommunityPhoto = "" + buildAssetsURL("north_conway.Ch3QPMXA.jpg");
+const ApproachPhoto = "" + buildAssetsURL("Our Approach.DVFVMeub.jpeg");
+const _sfc_main$1 = /* @__PURE__ */ defineComponent({
+  __name: "Content",
+  __ssrInlineRender: true,
+  props: {
+    "modelValue": {},
+    "modelModifiers": {}
+  },
+  emits: ["update:modelValue"],
+  setup(__props) {
+    useModel(__props, "modelValue");
+    inject("caller");
+    const contentSections = ref([
+      {
+        sectionName: "About Us",
+        sectionContent: "Welcome to Thistledown Recovery Home, a dedicated sober living environment for men who are committed to transforming their lives and embracing sobriety. Our home is designed to provide a supportive and structured living space that fosters personal growth, accountability, and a sense of community among residents who are on a shared journey towards lasting recovery.",
+        imgSrc: AboutUsPhoto
+      },
+      {
+        sectionName: "Our Mission",
+        sectionContent: "At Thistledown Recovery Home, our mission is to offer a safe and stable residence for men who have made a conscious decision to stay sober. We understand that the path to recovery is unique for each individual, and we believe that a supportive home environment is crucial to maintaining sobriety. Our goal is to facilitate a space where residents can focus on their recovery without the distractions and triggers of their previous living situations.",
+        imgSrc: MissionPhoto
+      },
+      {
+        sectionName: "Our Home",
+        sectionContent: "Located in Conway, New Hampshire, our sober home is situated in a peaceful and welcoming community. The residence features comfortable living quarters, communal spaces for fellowship and relaxation, and amenities that cater to the needs of our residents. We take pride in maintaining a clean and orderly home to ensure a conducive atmosphere for recovery.",
+        imgSrc: HomePhoto,
+        boldCallout: "CONWAY, NH"
+      },
+      {
+        sectionName: "Our Community",
+        sectionContent: "Thistledown is situated in a vibrant community, surrounded by a plethora of diverse businesses. Its convenient location offers residents the unique advantage of being within walking distance or a short commute to a wide range of employment opportunities. Residents are permitted to store personal bicycles on property and a local taxi service is available for transportation needs, ensuring everyone has easy access to reliable travel to and from their place of employment.",
+        imgSrc: CommunityPhoto
+      },
+      {
+        sectionName: "Our Approach",
+        sectionContent: "While we do not offer treatment services, our sober home operates with guidelines that encourage a sober lifestyle. We require that all residents commit to staying drug and alcohol-free, actively participate in their personal recovery plans, and support one another in their journey. Our house rules are designed to promote respect, responsibility, and personal growth.\n	\n	Residents are encouraged to engage with external recovery programs, attend meetings, and seek out the resources they need to support their sobriety. We believe in the power of community and peer support, and our home serves as a foundation from which residents can build a fulfilling and sober life.",
+        imgSrc: ApproachPhoto
+      }
+    ]);
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_ContentBlock = __nuxt_component_0$1;
+      const _component_AmenityCard = _sfc_main$2;
+      _push(`<div${ssrRenderAttrs(mergeProps({ class: "d-flex flex-column bg-thistle-ultralight-grey" }, _attrs))} data-v-b9b93e94><!--[-->`);
+      ssrRenderList(unref(contentSections), (section, index) => {
+        _push(ssrRenderComponent(_component_ContentBlock, {
+          key: section.sectionName,
+          imgAfterText: index % 2 > 0,
+          sectionName: section.sectionName,
+          sectionContent: section.sectionContent,
+          imgSrc: section.imgSrc,
+          boldCallout: section.boldCallout
+        }, null, _parent));
+      });
+      _push(`<!--]-->`);
+      _push(ssrRenderComponent(_component_ContentBlock, {
+        imgAfterText: true,
+        imgSrc: unref(HouseAmenPhoto),
+        sectionName: "House Amenities"
+      }, {
+        default: withCtx((_, _push2, _parent2, _scopeId) => {
+          if (_push2) {
+            _push2(`<div class="d-flex flex-column" data-v-b9b93e94${_scopeId}><hr data-v-b9b93e94${_scopeId}><div class="d-flex align-self-center w-100" data-v-b9b93e94${_scopeId}><div class="col d-flex flex-column" data-v-b9b93e94${_scopeId}><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(SingleDouble),
+              text: "Single and double occupancy bedrooms"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(Beds),
+              text: "Twin bed, bedding, and personal dresser"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(WasherDryer),
+              text: "Washer and dryer on-site"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(CableTV),
+              text: "Cable television, free wi-fi"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(Parking),
+              text: "Parking on-site"
+            }, null, _parent2, _scopeId));
+            _push2(`</div></div><div class="col d-flex flex-column" data-v-b9b93e94${_scopeId}><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(Kitchen),
+              text: "Full kitchen and multiple refrigerators"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(Bathroom),
+              text: "3 full bathrooms"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(OutdoorSpace),
+              text: "Outdoor communal space and smoking area"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}>`);
+            _push2(ssrRenderComponent(_component_AmenityCard, {
+              icon: unref(Bike),
+              text: "Storage space for bicycles or motor vehicles"
+            }, null, _parent2, _scopeId));
+            _push2(`</div><div class="col" data-v-b9b93e94${_scopeId}></div></div></div></div>`);
+          } else {
+            return [
+              createVNode("div", { class: "d-flex flex-column" }, [
+                createVNode("hr"),
+                createVNode("div", { class: "d-flex align-self-center w-100" }, [
+                  createVNode("div", { class: "col d-flex flex-column" }, [
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(SingleDouble),
+                        text: "Single and double occupancy bedrooms"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(Beds),
+                        text: "Twin bed, bedding, and personal dresser"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(WasherDryer),
+                        text: "Washer and dryer on-site"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(CableTV),
+                        text: "Cable television, free wi-fi"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(Parking),
+                        text: "Parking on-site"
+                      }, null, 8, ["icon"])
+                    ])
+                  ]),
+                  createVNode("div", { class: "col d-flex flex-column" }, [
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(Kitchen),
+                        text: "Full kitchen and multiple refrigerators"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(Bathroom),
+                        text: "3 full bathrooms"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(OutdoorSpace),
+                        text: "Outdoor communal space and smoking area"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" }, [
+                      createVNode(_component_AmenityCard, {
+                        icon: unref(Bike),
+                        text: "Storage space for bicycles or motor vehicles"
+                      }, null, 8, ["icon"])
+                    ]),
+                    createVNode("div", { class: "col" })
+                  ])
+                ])
+              ])
+            ];
+          }
+        }),
+        _: 1
+      }, _parent));
+      _push(`<hr class="mx-4" data-v-b9b93e94><div class="container col-xxl-8 px-4 py-5" data-v-b9b93e94><div class="row flex-lg-row-reverse align-items-center g-5 py-5" data-v-b9b93e94><div class="col justify-content-center text-center" data-v-b9b93e94><h1 id="join-us" class="display-5 fw-bold text-body-emphasis lh-1 mb-3" data-v-b9b93e94>Join Us</h1><p class="lead" data-v-b9b93e94>If you or a loved one is seeking a men&#39;s sober living home that prioritizes a sober and supportive living environment, Thistledown Recovery Home may be the right fit. We invite you to learn more about our home and how we can be a part of your recovery journey. Please contact us for more information or to schedule a visit.</p><div class="d-lg-flex d-none justify-content-center" data-v-b9b93e94><button type="button" class="btn btn-primary btn-lg px-4 me-md-2" data-v-b9b93e94>Request Info</button><button type="button" class="btn btn-success btn-lg px-4" data-v-b9b93e94>Apply Now!</button></div></div></div></div></div>`);
+    };
+  }
+});
+const _sfc_setup$1 = _sfc_main$1.setup;
+_sfc_main$1.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/Content.vue");
+  return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
+};
+const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b9b93e94"]]);
+const _sfc_main = /* @__PURE__ */ defineComponent({
+  __name: "index",
+  __ssrInlineRender: true,
+  props: {
+    "modelValue": {},
+    "modelModifiers": {}
+  },
+  emits: ["update:modelValue"],
+  setup(__props) {
+    const showModal = useModel(__props, "modelValue");
+    return (_ctx, _push, _parent, _attrs) => {
+      const _component_Content = __nuxt_component_0;
+      _push(ssrRenderComponent(_component_Content, mergeProps({
+        modelValue: showModal.value,
+        "onUpdate:modelValue": ($event) => showModal.value = $event
+      }, _attrs), null, _parent));
+    };
+  }
+});
+const _sfc_setup = _sfc_main.setup;
+_sfc_main.setup = (props, ctx) => {
+  const ssrContext = useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("pages/index.vue");
+  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
+};
+
+export { _sfc_main as default };
+//# sourceMappingURL=index-BaaSBkLQ.mjs.map
